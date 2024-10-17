@@ -24,8 +24,6 @@ public class HumanBody : MonoBehaviour
 
     protected virtual void Move(Vector3 direction, Vector3 inputDirection)
     {
-        Debug.Log("クラス名: HumanBody , 関数名: Move");
-
         // 速度のスケーリング
         Vector3 velocity = inputDirection * speed;
 

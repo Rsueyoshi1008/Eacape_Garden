@@ -541,8 +541,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050272902017589242}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000038603844, y: -0.000000013126112, z: -5.0671835e-16, w: 1}
-  m_LocalPosition: {x: -0.005004883, y: 1.6299992, z: -10.031006}
+  m_LocalRotation: {x: 0.08715535, y: -0.0000000074222277, z: 6.493579e-10, w: 0.9961948}
+  m_LocalPosition: {x: -0.005004883, y: 2.4618893, z: -5.9398804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -581,7 +581,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1291,7 +1291,7 @@ GameObject:
   - component: {fileID: 5257744224384092819}
   - component: {fileID: 7321327692772746872}
   - component: {fileID: 7629833201169105250}
-  - component: {fileID: 1366797862246387914}
+  - component: {fileID: -2060093480067739279}
   m_Layer: 0
   m_Name: Man_03
   m_TagString: Untagged
@@ -1369,6 +1369,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  rotationSpeed: 10
+  cinemachineCamera: {fileID: 0}
 --- !u!54 &7629833201169105250
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1396,8 +1398,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!65 &1366797862246387914
-BoxCollider:
+--- !u!136 &-2060093480067739279
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1414,9 +1416,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 0.3}
-  m_Center: {x: 0, y: 1, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.18133545
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9100001, z: -0.01739502}
 --- !u!1 &1969888963025423910
 GameObject:
   m_ObjectHideFlags: 0

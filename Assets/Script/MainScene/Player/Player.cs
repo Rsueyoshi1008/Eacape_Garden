@@ -4,7 +4,7 @@ using Unity.Cinemachine;
 public class Player : HumanBody
 {
 
-    [SerializeField] private float mouseSensitivity = 10f;
+    [SerializeField] private float rotationSpeed = 10f;
 
     [SerializeField] private CinemachineCamera cinemachineCamera;
     
@@ -28,10 +28,6 @@ public class Player : HumanBody
 
         float y = Input.GetAxis("Vertical");
 
-        
-
-        RotationControl();
-
         Vector3 direction = new Vector3(x, 0, y).normalized;
 
         // カメラのTransformを取得
@@ -42,6 +38,8 @@ public class Player : HumanBody
 
         Move(direction, inputDirection);
 
+        RotationControl(inputDirection);
+
         animator.SetFloat("Speed", direction.magnitude);
     }
 
@@ -50,21 +48,20 @@ public class Player : HumanBody
         base.Move(direction, inputDirection);
     }
 
-    private void RotationControl()
+    private void RotationControl(Vector3 inputDirection)
     {
-        // マウスの入力を取得
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        
-        // プレイヤーの回転を更新
-        rotationY += mouseX;
-
-        transform.localRotation = Quaternion.Euler(0f, rotationY, 0f);
+        if (inputDirection.sqrMagnitude > 0.01f) // 入力がある場合のみ回転
+        {
+            // 入力方向に基づいてプレイヤーの回転を更新
+            Quaternion targetRotation = Quaternion.LookRotation(new Vector3(inputDirection.x, 0, inputDirection.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
     } 
 
     private void OnCollisionEnter(Collision c)
     {
         Debug.Log("クラス名: Player , 関数名: OnCollisionEnter");
-        Debug.Log("接触したオブジェクト" + c.gameObject.name);
+        
         // ここに衝突時の処理を追加
     }
 }
