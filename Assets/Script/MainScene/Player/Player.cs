@@ -3,12 +3,15 @@ using Unity.Cinemachine;
 
 public class Player : HumanBody
 {
-
+    [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float rotationSpeed = 10f;
 
     [SerializeField] private CinemachineCamera cinemachineCamera;
     
     private float rotationY = 0f;
+
+    private float groundDistance = 0.1f;
+    [SerializeField] private Transform groundCheck;
     void Start()
     {
         Debug.Log("クラス名: Player , 関数名: Start");
@@ -19,7 +22,16 @@ public class Player : HumanBody
     // Update is called once per frame
     void Update()
     {
-        
+        // キャラクターのレイヤーマスクを作成
+        int layerMask = ~LayerMask.GetMask("Player");
+        bool isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, layerMask);
+
+        if(isGrounded && Input.GetButtonDown("Jump"))
+        {
+            Jump();
+            
+        }
+        animator.SetBool("Jump", isGrounded);
     }
 
     private void FixedUpdate() 
@@ -46,6 +58,12 @@ public class Player : HumanBody
     protected override void Move(Vector3 direction, Vector3 inputDirection)
     {
         base.Move(direction, inputDirection);
+    }
+
+    private void Jump()
+    {
+        Debug.Log("クラス名: Player , 関数名: Jump");
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
     private void RotationControl(Vector3 inputDirection)
