@@ -4,11 +4,8 @@ using Unity.Cinemachine;
 public class Player : HumanBody
 {
     [SerializeField] private float jumpForce = 5f;
-    [SerializeField] private float rotationSpeed = 10f;
 
     [SerializeField] private CinemachineCamera cinemachineCamera;
-    
-    private float rotationY = 0f;
 
     private float groundDistance = 0.1f;
     [SerializeField] private Transform groundCheck;
@@ -48,16 +45,18 @@ public class Player : HumanBody
         // カメラの向きに合わせて入力の変換
         Vector3 inputDirection = cameraTransform.TransformDirection(direction);
 
-        Move(direction, inputDirection);
-
-        RotationControl(inputDirection);
-
-        animator.SetFloat("Speed", direction.magnitude);
+        Move(inputDirection);
+        if (inputDirection.sqrMagnitude > 0.01f) // 入力がある場合のみ回転
+        {
+            base.Rotation(inputDirection);
+        }
+        
+        //animator.SetFloat("Speed", direction.magnitude);
     }
 
-    protected override void Move(Vector3 direction, Vector3 inputDirection)
+    protected override void Move(Vector3 inputDirection)
     {
-        base.Move(direction, inputDirection);
+        base.Move(inputDirection);
     }
 
     private void Jump()
@@ -65,16 +64,6 @@ public class Player : HumanBody
         Debug.Log("クラス名: Player , 関数名: Jump");
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
-
-    private void RotationControl(Vector3 inputDirection)
-    {
-        if (inputDirection.sqrMagnitude > 0.01f) // 入力がある場合のみ回転
-        {
-            // 入力方向に基づいてプレイヤーの回転を更新
-            Quaternion targetRotation = Quaternion.LookRotation(new Vector3(inputDirection.x, 0, inputDirection.z));
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        }
-    } 
 
     private void OnCollisionEnter(Collision c)
     {
