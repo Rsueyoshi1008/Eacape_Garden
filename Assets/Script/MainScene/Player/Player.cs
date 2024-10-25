@@ -9,6 +9,11 @@ public class Player : HumanBody
 
     private float groundDistance = 0.1f;
     [SerializeField] private Transform groundCheck;
+
+    [SerializeField] private Transform lookAt;
+
+    // 足音の探知範囲を返す
+    private bool isSoundDetection = false;
     void Start()
     {
         Debug.Log("クラス名: Player , 関数名: Start");
@@ -26,8 +31,10 @@ public class Player : HumanBody
         if(isGrounded && Input.GetButtonDown("Jump"))
         {
             Jump();
-            
         }
+
+        
+
         animator.SetBool("Jump", isGrounded);
     }
 
@@ -46,12 +53,13 @@ public class Player : HumanBody
         Vector3 inputDirection = cameraTransform.TransformDirection(direction);
 
         Move(inputDirection);
+        
         if (inputDirection.sqrMagnitude > 0.01f) // 入力がある場合のみ回転
         {
             base.Rotation(inputDirection);
         }
         
-        //animator.SetFloat("Speed", direction.magnitude);
+        animator.SetFloat("Speed", direction.magnitude);
     }
 
     protected override void Move(Vector3 inputDirection)
@@ -63,6 +71,33 @@ public class Player : HumanBody
     {
         Debug.Log("クラス名: Player , 関数名: Jump");
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
+    
+
+    private void SetAudioClip(string clipName)
+    {
+        Debug.Log("クラス名: Player , 関数名: SetAudioClip");
+        //audioSource.clip = audioClips[clipName];
+    }
+
+    public bool AudioIsPlaying()
+    {
+        Debug.Log("クラス名: Player , 関数名: AudioIsPlaying");
+        return audioSource.isPlaying;
+    }
+
+    public Transform GetLookAt()
+    {
+        Debug.Log("クラス名: Player , 関数名: GetLookAt");
+        return lookAt;
+    }
+
+    // アニメーションイベントから呼び出される
+    private void StartAudioSource()
+    {
+        Debug.Log("クラス名: Player , 関数名: StartAudioSource");
+        audioSource.Play();
     }
 
     private void OnCollisionEnter(Collision c)
