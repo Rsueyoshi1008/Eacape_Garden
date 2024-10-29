@@ -87,7 +87,7 @@ public class Player : HumanBody
         return audioSource.isPlaying;
     }
 
-    public Transform GetLookAt()
+    public Transform GetPlayer()
     {
         Debug.Log("クラス名: Player , 関数名: GetLookAt");
         return lookAt;

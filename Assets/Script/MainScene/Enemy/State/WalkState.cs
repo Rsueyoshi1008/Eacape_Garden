@@ -5,7 +5,6 @@ public partial class Enemy : HumanBody
     private void StartWalk()
     {
         Debug.Log("クラス名: Enemy , 関数名: StartWalk");
-        soundDetectionCollider.enabled = true;
     }
 
     private void FixedUpdateWalk()

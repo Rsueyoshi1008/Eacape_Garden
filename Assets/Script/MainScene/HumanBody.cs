@@ -3,6 +3,7 @@ using UnityEngine;
 public class HumanBody : MonoBehaviour
 {
     [SerializeField] protected float speed = 1f;
+    [SerializeField] protected float dashSpeed = 5f;
 
     [SerializeField] protected float rotationSpeed = 5f;
 

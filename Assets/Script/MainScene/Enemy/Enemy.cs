@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.AI;
 
 public partial class Enemy : HumanBody
 {
@@ -7,7 +8,7 @@ public partial class Enemy : HumanBody
     {
         Idle,
         Walk,
-        Run,
+        Tracking,
         Attack,
         Damage,
         Dead,
@@ -20,14 +21,20 @@ public partial class Enemy : HumanBody
     private Player player;
 
     private BoxCollider soundDetectionCollider;
+
+    private NavMeshAgent agent;
+
+    private Transform goalPoint;
     void Start()
     {
         Debug.Log("クラス名: Enemy , 関数名: Start");
         base.Start();
 
         currentState = GameState.Walk;
-        targetPosition = GameObject.Find("TargetPosition").transform.position;
         soundDetectionCollider = GetComponentInChildren<BoxCollider>();
+        agent = GetComponent<NavMeshAgent>();
+        goalPoint = GameObject.Find("EnemyGoalPoint").transform;
+        targetPosition = GetRandomGoalPointPosition();
     }
 
     // Update is called once per frame
@@ -37,10 +44,6 @@ public partial class Enemy : HumanBody
         {
             case GameState.Idle:
                 UpdateIdle();
-                break;
-
-            case GameState.Run:
-                UpdateRun();
                 break;
 
             case GameState.Attack:
@@ -68,6 +71,10 @@ public partial class Enemy : HumanBody
             case GameState.Walk:
                 FixedUpdateWalk();
                 break;
+
+                case GameState.Tracking:
+                FixedUpdateTracking();
+                break;
         }
     }
 
@@ -86,6 +93,21 @@ public partial class Enemy : HumanBody
         audioSource.Play();
     }
 
+    private Vector3 GetRandomGoalPointPosition()
+    {
+        Debug.Log("クラス名: Enemy , 関数名: GetRandomGoalPointPosition");
+        
+        int childCount = goalPoint.childCount;
+        if (childCount == 0)
+        {
+            Debug.LogWarning("goalPointに子要素がありません");
+            return Vector3.zero;
+        }
+
+        int randomIndex = Random.Range(0, childCount);
+        Transform randomChild = goalPoint.GetChild(randomIndex);
+        return randomChild.position;
+    }
     private void OnTriggerStay(Collider c)
     {
         // タグを比較して特定のタグを持つオブジェクトに対してのみ処理を行う
@@ -119,7 +141,10 @@ public partial class Enemy : HumanBody
 
     public void SetCurrentGameState(GameState newState)
     {
+        Debug.Log("クラス名: Enemy , 関数名: SetCurrentGameState");
+
         currentState = newState;
+        Debug.Log("ステート遷移: " + currentState);
         switch(currentState)
         {
             case GameState.Idle:
@@ -130,8 +155,8 @@ public partial class Enemy : HumanBody
                 StartWalk();
                 break;
 
-            case GameState.Run:
-                StartRun();
+            case GameState.Tracking:
+                StartTracking();
                 break;
 
             case GameState.Attack:
