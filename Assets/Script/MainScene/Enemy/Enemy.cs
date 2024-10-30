@@ -7,7 +7,7 @@ public partial class Enemy : HumanBody
     public enum GameState
     {
         Idle,
-        Walk,
+        Security,
         Tracking,
         Attack,
         Damage,
@@ -30,7 +30,7 @@ public partial class Enemy : HumanBody
         Debug.Log("クラス名: Enemy , 関数名: Start");
         base.Start();
 
-        currentState = GameState.Walk;
+        currentState = GameState.Security;
         soundDetectionCollider = GetComponentInChildren<BoxCollider>();
         agent = GetComponent<NavMeshAgent>();
         goalPoint = GameObject.Find("EnemyGoalPoint").transform;
@@ -68,8 +68,8 @@ public partial class Enemy : HumanBody
     {
         switch (currentState)
         {
-            case GameState.Walk:
-                FixedUpdateWalk();
+            case GameState.Security:
+                FixedUpdateSecurity();
                 break;
 
                 case GameState.Tracking:
@@ -123,22 +123,6 @@ public partial class Enemy : HumanBody
         }
     }
 
-    private void OnTriggerExit(Collider c)
-    {
-        if (c.gameObject.tag == "Player")
-        {
-            StartCoroutine(DelayedExit());
-        }
-    }
-
-    private IEnumerator DelayedExit()
-    {
-        yield return new WaitForSeconds(2f); // 2秒待機
-
-        player = null;
-        SetCurrentGameState(GameState.Walk);
-    }
-
     public void SetCurrentGameState(GameState newState)
     {
         Debug.Log("クラス名: Enemy , 関数名: SetCurrentGameState");
@@ -151,8 +135,8 @@ public partial class Enemy : HumanBody
                 StartIdle();
                 break;
 
-            case GameState.Walk:
-                StartWalk();
+            case GameState.Security:
+                StartSecurity();
                 break;
 
             case GameState.Tracking:

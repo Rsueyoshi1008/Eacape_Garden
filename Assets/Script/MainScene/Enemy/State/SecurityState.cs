@@ -2,12 +2,12 @@ using UnityEngine;
 
 public partial class Enemy : HumanBody
 {
-    private void StartWalk()
+    private void StartSecurity()
     {
         Debug.Log("クラス名: Enemy , 関数名: StartWalk");
     }
 
-    private void FixedUpdateWalk()
+    private void FixedUpdateSecurity()
     {
         Debug.Log("クラス名: Enemy , 関数名: UpdateWalk");
 

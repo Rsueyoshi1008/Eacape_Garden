@@ -3,6 +3,8 @@ using Unity.Cinemachine;
 
 public class Player : HumanBody
 {
+    [SerializeField] private GameObject magazinePrefab;
+    [SerializeField] private Transform magazineSpawnPoint;
     [SerializeField] private float jumpForce = 5f;
 
     [SerializeField] private CinemachineCamera cinemachineCamera;
@@ -33,7 +35,10 @@ public class Player : HumanBody
             Jump();
         }
 
-        
+        if(Input.GetButtonDown("Fire1"))
+        {
+            SlowMagazine();
+        }
 
         animator.SetBool("Jump", isGrounded);
     }
@@ -73,7 +78,12 @@ public class Player : HumanBody
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
-    
+    private void SlowMagazine()
+    {
+        Debug.Log("クラス名: Player , 関数名: SlowMagazine");
+        GameObject newMagazine = Instantiate(magazinePrefab, magazineSpawnPoint.position, transform.rotation);
+        newMagazine.GetComponent<MagazineController>().GetPlayerForce(transform.forward);
+    }
 
     private void SetAudioClip(string clipName)
     {

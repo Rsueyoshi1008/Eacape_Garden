@@ -16,15 +16,13 @@ public partial class Enemy : HumanBody
 
     public void UpdateDetection()
     {
-        Debug.Log("クラス名: Enemy , 関数名: UpdateDetection");
-        Debug.Log(isFound(playerTransform));
         if(isFound(playerTransform))
         {
             SetCurrentGameState(GameState.Tracking);
         }
         else
         {
-            SetCurrentGameState(GameState.Walk);
+            SetCurrentGameState(GameState.Security);
         }
     }
 
@@ -43,7 +41,6 @@ public partial class Enemy : HumanBody
         // その障害物が敵とプレイヤの間にある
         if (Physics.Raycast(ray, out hit, detectionDistance, layerMask)) 
         {
-            //Debug.Log(hit.collider.gameObject.name);
             if(hit.collider.gameObject.tag == "Player")
             {
                 return true;

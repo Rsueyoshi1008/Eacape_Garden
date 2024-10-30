@@ -17476,7 +17476,7 @@ GameObject:
   - component: {fileID: 132425338}
   m_Layer: 9
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30592,6 +30592,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 405124, guid: 513a0e1241d2a72459d1db2f9dc27f3e, type: 3}
   m_PrefabInstance: {fileID: 222405357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &222506485 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4799549789080653292, guid: 9399c41b8d2221f41963667a12bc9e89, type: 3}
+  m_PrefabInstance: {fileID: 5808640265382194183}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &222763802
 PrefabInstance:
@@ -283647,13 +283652,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7321327692772746872, guid: 9399c41b8d2221f41963667a12bc9e89, type: 3}
-      propertyPath: lookAt
+      propertyPath: magazinePrefab
       value: 
-      objectReference: {fileID: 1061582144}
+      objectReference: {fileID: 7144065096703563996, guid: b5c250cf857e87546bfae19a751f3c92, type: 3}
     - target: {fileID: 7321327692772746872, guid: 9399c41b8d2221f41963667a12bc9e89, type: 3}
       propertyPath: cinemachineCamera
       value: 
       objectReference: {fileID: 2109932846}
+    - target: {fileID: 7321327692772746872, guid: 9399c41b8d2221f41963667a12bc9e89, type: 3}
+      propertyPath: magazineSpawnPoint
+      value: 
+      objectReference: {fileID: 222506485}
+    - target: {fileID: 7958660813510747435, guid: 9399c41b8d2221f41963667a12bc9e89, type: 3}
+      propertyPath: m_Name
+      value: SpawnPoint
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -7,12 +7,11 @@ public partial class Enemy : HumanBody
         Debug.Log("クラス名: Enemy , 関数名: StartTracking");
         soundDetectionCollider.enabled = false;
 
-        // 歩くアニメーションの再生
+        // 走るアニメーションの再生
         animator.SetBool("Tracking", true);
 
         speed = dashSpeed;
 
-        // 敵から視認されている間の処理
         playerTransform = player.GetPlayer();
     }
 
@@ -36,7 +35,7 @@ public partial class Enemy : HumanBody
             Move(dir);
             Rotation(dir);
 
-            SetCurrentGameState(GameState.Walk);
+            SetCurrentGameState(GameState.Security);
         }
         
 
