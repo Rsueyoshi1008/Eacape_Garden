@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: M1911 Magazine_Silver
       objectReference: {fileID: 0}
+    - target: {fileID: 1688796160857414, guid: 71d42f13891e48c4487496fd15802eda, type: 3}
+      propertyPath: m_TagString
+      value: Detection
+      objectReference: {fileID: 0}
     - target: {fileID: 4000101247158624, guid: 71d42f13891e48c4487496fd15802eda, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -88,6 +92,9 @@ PrefabInstance:
       addedObject: {fileID: 740950453086182894}
     - targetCorrespondingSourceObject: {fileID: 1688796160857414, guid: 71d42f13891e48c4487496fd15802eda, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 3808571347242188250}
+    - targetCorrespondingSourceObject: {fileID: 1688796160857414, guid: 71d42f13891e48c4487496fd15802eda, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 886330714259619461}
     - targetCorrespondingSourceObject: {fileID: 1688796160857414, guid: 71d42f13891e48c4487496fd15802eda, type: 3}
       insertIndex: -1
@@ -138,6 +145,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMagnitude: 25
+--- !u!114 &3808571347242188250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7144065096703563996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 691dd65e9f2bcf14ab7480d5f54b0ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &886330714259619461
 MeshCollider:
   m_ObjectHideFlags: 0

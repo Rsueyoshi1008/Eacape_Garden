@@ -334,6 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 413904}
   - component: {fileID: 20503288}
+  - component: {fileID: 5144210108797884232}
   m_Layer: 8
   m_Name: Prop_ParkBench_A
   m_TagString: Untagged
@@ -386,3 +387,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2341038}
   m_Enabled: 1
+--- !u!208 &5144210108797884232
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194530}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.45, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
+  m_TimeToStationary: 0.5

@@ -226,6 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 433038}
   - component: {fileID: 20543684}
+  - component: {fileID: 7962372429315044540}
   m_Layer: 8
   m_Name: Prop_ChurchBench_A
   m_TagString: Untagged
@@ -273,3 +274,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2364536}
   m_Enabled: 1
+--- !u!208 &7962372429315044540
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144546}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.75, y: 0.795, z: 0.585}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -1.26, y: 0.75, z: -0.34}
+  m_TimeToStationary: 0.5

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 418962}
   - component: {fileID: 3301120}
   - component: {fileID: 2368952}
-  - component: {fileID: 4716284996987719864}
+  - component: {fileID: 8861656857748344165}
   m_Layer: 8
   m_Name: Prop_Rug_A
   m_TagString: Untagged
@@ -87,7 +87,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4716284996987719864
+--- !u!114 &8861656857748344165
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

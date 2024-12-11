@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3354600}
   - component: {fileID: 2360378}
   - component: {fileID: 6418770}
+  - component: {fileID: 7573486224275804732}
   m_Layer: 0
   m_Name: GreenHouse1_End_A
   m_TagString: Untagged
@@ -109,3 +110,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: ac7cddd11f4e207499d4f0adad2f3604, type: 3}
+--- !u!208 &7573486224275804732
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142990}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 11.204, y: 6.9540005, z: 2.709}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 10, y: 4.9820004, z: -2.207}
+  m_TimeToStationary: 0.5

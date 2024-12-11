@@ -7,6 +7,7 @@ TagManager:
   - Detection
   - Enemy
   - Ground
+  - Stair
   layers:
   - Default
   - TransparentFX

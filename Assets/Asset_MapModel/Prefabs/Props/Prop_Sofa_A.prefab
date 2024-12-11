@@ -118,6 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 432834}
   - component: {fileID: 20540796}
+  - component: {fileID: 7445799748585206837}
   m_Layer: 8
   m_Name: Prop_Sofa_A
   m_TagString: Untagged
@@ -165,6 +166,22 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2393798}
   m_Enabled: 1
+--- !u!208 &7445799748585206837
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132456}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.49, y: 0.75, z: 0.65}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.73, z: 0.39}
+  m_TimeToStationary: 0.5
 --- !u!1 &182092
 GameObject:
   m_ObjectHideFlags: 0
